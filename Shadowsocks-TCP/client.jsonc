@@ -14,18 +14,6 @@
             }
         ]
     },
-    "inbounds": [  // useless but configuration required
-        {
-            "listen": "127.0.0.1",
-            "port": "1080",
-            "protocol": "socks",
-            "settings": {
-                "auth": "noauth",
-                "ip": "127.0.0.1",
-                "udp": true
-            }
-        }
-    ],
     "outbounds": [
         {
             "protocol": "shadowsocks",
