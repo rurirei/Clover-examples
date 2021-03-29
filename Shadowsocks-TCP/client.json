@@ -1,6 +1,6 @@
 {
     "log": {
-        "loglevel": "warning"
+        "loglevel": "debug"
     },
     "routing": {
         "domainStrategy": "AsIs",
@@ -14,7 +14,7 @@
             }
         ]
     },
-    "inbounds": [
+    "inbounds": [  // useless but configuration required
         {
             "listen": "127.0.0.1",
             "port": "1080",
@@ -24,11 +24,6 @@
                 "udp": true,
                 "ip": "127.0.0.1"
             }
-        },
-        {
-            "listen": "127.0.0.1",
-            "port": "1081",
-            "protocol": "http"
         }
     ],
     "outbounds": [
@@ -39,8 +34,8 @@
                     {
                         "address": "{{ host }}",
                         "port": 1234,
-                        "method": "chacha20-ietf-poly1305",
-                        "password": "{{ password}}"
+                        "method": "auto",
+                        "password": "{{ password }}"
                     }
                 ]
             },
