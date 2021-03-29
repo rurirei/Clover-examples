@@ -21,8 +21,8 @@
             "protocol": "socks",
             "settings": {
                 "auth": "noauth",
-                "udp": true,
-                "ip": "127.0.0.1"
+                "ip": "127.0.0.1",
+                "udp": true
             }
         }
     ],
@@ -33,8 +33,8 @@
                 "servers": [
                     {
                         "address": "{{ host }}",
-                        "port": 1234,
-                        "method": "auto",
+                        "port": {{ port }},
+                        "method": "AES-128-GCM",
                         "password": "{{ password }}"
                     }
                 ]
