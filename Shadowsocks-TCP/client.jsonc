@@ -1,6 +1,6 @@
 {
     "log": {
-        "loglevel": "warning"
+        "loglevel": "debug"
     },
     "routing": {
         "domainStrategy": "AsIs",
@@ -14,46 +14,33 @@
             }
         ]
     },
-    "inbounds": [
+    "inbounds": [  // useless but configuration required
         {
             "listen": "127.0.0.1",
             "port": "1080",
             "protocol": "socks",
             "settings": {
                 "auth": "noauth",
-                "udp": true,
-                "ip": "127.0.0.1"
+                "ip": "127.0.0.1",
+                "udp": true
             }
-        },
-        {
-            "listen": "127.0.0.1",
-            "port": "1081",
-            "protocol": "http"
         }
     ],
     "outbounds": [
         {
-            "protocol": "socks",
+            "protocol": "shadowsocks",
             "settings": {
                 "servers": [
                     {
-                        "address": "",
-                        "port": 1234,
-                        "users": [
-                            {
-                                "user": "",
-                                "pass": ""
-                            }
-                        ]
+                        "address": "{{ host }}",
+                        "port": {{ port }},
+                        "method": "AES-128-GCM",
+                        "password": "{{ password }}"
                     }
                 ]
             },
             "streamSettings": {
-                "network": "tcp",
-                "security": "tls",
-                "tlsSettings": {
-                    "serverName": "example.domain"
-                }
+                "network": "tcp"
             },
             "tag": "proxy"
         },

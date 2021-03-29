@@ -1,8 +1,8 @@
 {
     "log": {
-        "loglevel": "warning"
+        "loglevel": "debug"
     },
-    "inbounds": [
+    "inbounds": [ // useless but configuration required
         {
             "listen": "127.0.0.1",
             "port": "1080",
@@ -12,11 +12,6 @@
                 "udp": true,
                 "ip": "127.0.0.1"
             }
-        },
-        {
-            "listen": "127.0.0.1",
-            "port": "1081",
-            "protocol": "http"
         }
     ],
     "outbounds": [
@@ -25,11 +20,11 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "1.2.3.4",
-                        "port": 443,
+                        "address": "{{ host }}",
+                        "port": {{ port }},
                         "users": [
                             {
-                                "id": "",
+                                "id": "{{ id }}",
                                 "encryption": "none",
                                 "level": 0
                             }
@@ -41,13 +36,7 @@
                 "network": "tcp",
                 "security": "tls",
                 "tlsSettings": {
-                    "serverName": "example.domain",
-                    "allowInsecure": false,
-                    "alpn": [
-                        "h2",
-                        "http/1.1"
-                    ],
-                    "disableSessionResumption": true
+                    "serverName": "{{ example.com }}"
                 }
             },
             "tag": "proxy"
