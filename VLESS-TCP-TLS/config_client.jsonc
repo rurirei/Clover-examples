@@ -21,7 +21,7 @@
                 "vnext": [
                     {
                         "address": "{{ host }}",
-                        "port": 1234,
+                        "port": {{ port }},
                         "users": [
                             {
                                 "id": "{{ id }}",
