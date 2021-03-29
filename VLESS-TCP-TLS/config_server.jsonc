@@ -5,14 +5,12 @@
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 443,
+            "port": {{ port }},
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
-                        "id": "",
-                        "level": 0,
-                        "email": "love@v2fly.org"
+                        "id": "{{ id }}"
                     }
                 ],
                 "decryption": "none",
@@ -30,7 +28,7 @@
                 "network": "tcp",
                 "security": "tls",
                 "tlsSettings": {
-                    "serverName": "example.domain",
+                    "serverName": "{{ example.com }}",
                     "alpn": [
                         "h2",
                         "http/1.1"
