@@ -2,29 +2,17 @@
     "log": {
         "loglevel": "warning"
     },
-    "routing": {
-        "domainStrategy": "AsIs",
-        "rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "block"
-            }
-        ]
-    },
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 1234,
+            "port": {{ port }},
             "protocol": "vmess",
             "settings": {
                 "clients": [
                     {
                         "id": "{{ id }}",
-                        "alterId": 0,
-                        "security": "auto"
+                        "alterId": {{ alterId }},
+                        "security": "{{ security }}"
                     }
                 ]
             },
@@ -38,10 +26,6 @@
         {
             "protocol": "freedom",
             "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "block"
         }
     ]
 }

@@ -2,8 +2,26 @@
     "log": {
         "loglevel": "debug"
     },
+    "stats": {
+    },
+    "policy": {
+        "levels": {
+            "0": {
+                "handshake": 4,
+                "connIdle": 300,
+                "bufferSize": 0,
+                "uplinkOnly": 0,
+                "downlinkOnly": 0
+            }
+        },
+        "system": {
+            "statsOutboundUplink": true,
+            "statsOutboundDownlink": true
+        }
+    },
     "routing": {
         "domainStrategy": "AsIs",
+        "domainMatcher": "mph",
         "rules": [
             {
                 "type": "field",
@@ -11,6 +29,13 @@
                     "geoip:private"
                 ],
                 "outboundTag": "direct"
+            },
+            {
+                "type": "field",
+                "domains": [
+                    "geosite:category-ads-all"
+                ],
+                "outboundTag": "block"
             }
         ]
     },
@@ -25,8 +50,8 @@
                         "users": [
                             {
                                 "id": "{{ id }}",
-                                "alterId": 0,
-                                "security": "auto",
+                                "alterId": {{ alterId }},
+                                "security": "{{ security }}",
                                 "level": 0
                             }
                         ]
@@ -42,6 +67,10 @@
         {
             "protocol": "freedom",
             "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
         }
     ]
 }
