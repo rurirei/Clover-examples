@@ -20,11 +20,12 @@
             "port": {{ port }},
             "protocol": "shadowsocks",
             "settings": {
-                "method": "AES-128-GCM",
-                "password": "{{ password }}"
+                "password": "{{ password }}",
+                "method": "{{ method }}"
             },
             "streamSettings": {
-                "network": "tcp"
+                "network": "tcp",
+                "security": "none"
             }
         }
     ],
