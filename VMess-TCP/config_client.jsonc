@@ -20,7 +20,7 @@
         }
     },
     "routing": {
-        "domainStrategy": "AsIs",
+        "domainStrategy": "AsIs",  // NO change
         // "domainMatcher": "mph",  // default: mph
         "rules": [
             {
